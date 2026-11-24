@@ -1,0 +1,1391 @@
+{
+  "referenceDate" : "2026-11-23",
+  "savedAt" : "2026-11-24T09:56:49.7688403-03:00",
+  "municipality" : {
+    "codarea" : "3167202",
+    "nome" : "Sete Lagoas",
+    "uf" : "MG",
+    "lat" : -19.4658,
+    "lon" : -44.2467,
+    "urbanCenter" : true
+  },
+  "satellite" : "VIIRS NOAA-20",
+  "days" : 5,
+  "radiusKm" : 500,
+  "climate" : [ {
+    "date" : "2026-10-24",
+    "temperatureMax" : 29.2,
+    "precipitation" : 0.1,
+    "windspeed" : 11.8,
+    "humidityMin" : 47.0
+  }, {
+    "date" : "2026-10-25",
+    "temperatureMax" : 29.9,
+    "precipitation" : 5.0,
+    "windspeed" : 18.6,
+    "humidityMin" : 55.0
+  }, {
+    "date" : "2026-10-26",
+    "temperatureMax" : 28.1,
+    "precipitation" : 3.1,
+    "windspeed" : 16.3,
+    "humidityMin" : 57.0
+  }, {
+    "date" : "2026-10-27",
+    "temperatureMax" : 23.3,
+    "precipitation" : 2.7,
+    "windspeed" : 19.9,
+    "humidityMin" : 66.0
+  }, {
+    "date" : "2026-10-28",
+    "temperatureMax" : 24.8,
+    "precipitation" : 0.0,
+    "windspeed" : 16.7,
+    "humidityMin" : 61.0
+  }, {
+    "date" : "2026-10-29",
+    "temperatureMax" : 26.9,
+    "precipitation" : 2.8,
+    "windspeed" : 12.9,
+    "humidityMin" : 56.0
+  }, {
+    "date" : "2026-10-30",
+    "temperatureMax" : 25.8,
+    "precipitation" : 31.0,
+    "windspeed" : 15.2,
+    "humidityMin" : 69.0
+  }, {
+    "date" : "2026-10-31",
+    "temperatureMax" : 27.7,
+    "precipitation" : 2.7,
+    "windspeed" : 10.1,
+    "humidityMin" : 62.0
+  }, {
+    "date" : "2026-11-01",
+    "temperatureMax" : 27.1,
+    "precipitation" : 12.4,
+    "windspeed" : 14.3,
+    "humidityMin" : 63.0
+  }, {
+    "date" : "2026-11-02",
+    "temperatureMax" : 28.8,
+    "precipitation" : 9.7,
+    "windspeed" : 20.9,
+    "humidityMin" : 51.0
+  }, {
+    "date" : "2026-11-03",
+    "temperatureMax" : 28.8,
+    "precipitation" : 2.8,
+    "windspeed" : 11.4,
+    "humidityMin" : 50.0
+  }, {
+    "date" : "2026-11-04",
+    "temperatureMax" : 30.9,
+    "precipitation" : 0.3,
+    "windspeed" : 8.6,
+    "humidityMin" : 44.0
+  }, {
+    "date" : "2026-11-05",
+    "temperatureMax" : 30.1,
+    "precipitation" : 8.7,
+    "windspeed" : 15.3,
+    "humidityMin" : 55.0
+  }, {
+    "date" : "2026-11-06",
+    "temperatureMax" : 29.6,
+    "precipitation" : 0.0,
+    "windspeed" : 9.7,
+    "humidityMin" : 51.0
+  }, {
+    "date" : "2026-11-07",
+    "temperatureMax" : 31.7,
+    "precipitation" : 14.9,
+    "windspeed" : 13.3,
+    "humidityMin" : 44.0
+  }, {
+    "date" : "2026-11-08",
+    "temperatureMax" : 27.3,
+    "precipitation" : 9.0,
+    "windspeed" : 20.6,
+    "humidityMin" : 61.0
+  }, {
+    "date" : "2026-11-09",
+    "temperatureMax" : 19.3,
+    "precipitation" : 33.3,
+    "windspeed" : 22.6,
+    "humidityMin" : 84.0
+  }, {
+    "date" : "2026-11-10",
+    "temperatureMax" : 19.6,
+    "precipitation" : 1.5,
+    "windspeed" : 22.5,
+    "humidityMin" : 71.0
+  }, {
+    "date" : "2026-11-11",
+    "temperatureMax" : 23.5,
+    "precipitation" : 1.1,
+    "windspeed" : 15.8,
+    "humidityMin" : 67.0
+  }, {
+    "date" : "2026-11-12",
+    "temperatureMax" : 26.0,
+    "precipitation" : 0.5,
+    "windspeed" : 13.7,
+    "humidityMin" : 61.0
+  }, {
+    "date" : "2026-11-13",
+    "temperatureMax" : 27.9,
+    "precipitation" : 4.9,
+    "windspeed" : 18.7,
+    "humidityMin" : 51.0
+  }, {
+    "date" : "2026-11-14",
+    "temperatureMax" : 27.7,
+    "precipitation" : 2.6,
+    "windspeed" : 18.0,
+    "humidityMin" : 55.0
+  }, {
+    "date" : "2026-11-15",
+    "temperatureMax" : 28.0,
+    "precipitation" : 4.2,
+    "windspeed" : 12.8,
+    "humidityMin" : 57.0
+  }, {
+    "date" : "2026-11-16",
+    "temperatureMax" : 26.4,
+    "precipitation" : 9.4,
+    "windspeed" : 20.5,
+    "humidityMin" : 67.0
+  }, {
+    "date" : "2026-11-17",
+    "temperatureMax" : 27.1,
+    "precipitation" : 3.6,
+    "windspeed" : 11.7,
+    "humidityMin" : 61.0
+  }, {
+    "date" : "2026-11-18",
+    "temperatureMax" : 26.7,
+    "precipitation" : 12.0,
+    "windspeed" : 13.1,
+    "humidityMin" : 69.0
+  }, {
+    "date" : "2026-11-19",
+    "temperatureMax" : 27.2,
+    "precipitation" : 9.1,
+    "windspeed" : 10.1,
+    "humidityMin" : 65.0
+  }, {
+    "date" : "2026-11-20",
+    "temperatureMax" : 28.7,
+    "precipitation" : 7.9,
+    "windspeed" : 9.4,
+    "humidityMin" : 59.0
+  }, {
+    "date" : "2026-11-21",
+    "temperatureMax" : 26.4,
+    "precipitation" : 9.5,
+    "windspeed" : 14.5,
+    "humidityMin" : 74.0
+  }, {
+    "date" : "2026-11-22",
+    "temperatureMax" : 29.5,
+    "precipitation" : 16.6,
+    "windspeed" : 13.4,
+    "humidityMin" : 55.0
+  }, {
+    "date" : "2026-11-23",
+    "temperatureMax" : 28.0,
+    "precipitation" : 5.5,
+    "windspeed" : 19.2,
+    "humidityMin" : 70.0
+  } ],
+  "fires" : [ {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:18:00",
+    "latitude" : -20.25118,
+    "longitude" : -40.2344,
+    "frp" : 3.14,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 315.47,
+    "distanceKm" : 428.6,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:18:00",
+    "latitude" : -20.24984,
+    "longitude" : -40.24453,
+    "frp" : 2.34,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 316.86,
+    "distanceKm" : 427.5,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:18:00",
+    "latitude" : -20.24598,
+    "longitude" : -40.24397,
+    "frp" : 3.25,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 332.86,
+    "distanceKm" : 427.5,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:18:00",
+    "latitude" : -20.24213,
+    "longitude" : -40.2434,
+    "frp" : 3.25,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 308.38,
+    "distanceKm" : 427.5,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:18:00",
+    "latitude" : -20.23828,
+    "longitude" : -40.24284,
+    "frp" : 5.42,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 334.87,
+    "distanceKm" : 427.5,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:18:00",
+    "latitude" : -20.2319,
+    "longitude" : -40.23158,
+    "frp" : 2.47,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 320.85,
+    "distanceKm" : 428.5,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:18:00",
+    "latitude" : -20.23123,
+    "longitude" : -40.23666,
+    "frp" : 2.47,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 311.18,
+    "distanceKm" : 427.9,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:18:00",
+    "latitude" : -20.23057,
+    "longitude" : -40.24173,
+    "frp" : 0.96,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 309.09,
+    "distanceKm" : 427.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:18:00",
+    "latitude" : -20.2299,
+    "longitude" : -40.24679,
+    "frp" : 0.96,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 304.96,
+    "distanceKm" : 426.9,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:18:00",
+    "latitude" : -17.2352,
+    "longitude" : -45.98555,
+    "frp" : 1.03,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 307.98,
+    "distanceKm" : 308.5,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:18:00",
+    "latitude" : -17.23179,
+    "longitude" : -45.98488,
+    "frp" : 1.03,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 307.57,
+    "distanceKm" : 308.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:18:00",
+    "latitude" : -16.53405,
+    "longitude" : -47.7793,
+    "frp" : 1.62,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 312.07,
+    "distanceKm" : 495.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T01:21:00",
+    "latitude" : -22.81474,
+    "longitude" : -43.36966,
+    "frp" : 0.92,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 311.88,
+    "distanceKm" : 383.3,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -23.43485,
+    "longitude" : -46.43151,
+    "frp" : 4.3,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 333.26,
+    "distanceKm" : 495.9,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -22.92446,
+    "longitude" : -43.75488,
+    "frp" : 3.95,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 336.98,
+    "distanceKm" : 387.9,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -22.91403,
+    "longitude" : -43.73301,
+    "frp" : 2.09,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 329.79,
+    "distanceKm" : 387.1,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -22.91341,
+    "longitude" : -43.72916,
+    "frp" : 2.09,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 332.07,
+    "distanceKm" : 387.1,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -22.91128,
+    "longitude" : -43.73749,
+    "frp" : 3.59,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 339.02,
+    "distanceKm" : 386.7,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -22.90792,
+    "longitude" : -43.73812,
+    "frp" : 3.59,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 327.29,
+    "distanceKm" : 386.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -22.9073,
+    "longitude" : -43.73426,
+    "frp" : 8.05,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 349.75,
+    "distanceKm" : 386.3,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -22.90394,
+    "longitude" : -43.7349,
+    "frp" : 3.71,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 332.03,
+    "distanceKm" : 386.0,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -22.8965,
+    "longitude" : -45.34692,
+    "frp" : 7.2,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 335.29,
+    "distanceKm" : 398.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -22.86527,
+    "longitude" : -46.35461,
+    "frp" : 3.56,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 332.53,
+    "distanceKm" : 436.6,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -22.55527,
+    "longitude" : -44.66275,
+    "frp" : 3.71,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 336.73,
+    "distanceKm" : 346.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -20.86964,
+    "longitude" : -44.6515,
+    "frp" : 7.94,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 334.09,
+    "distanceKm" : 161.7,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -20.86571,
+    "longitude" : -44.64834,
+    "frp" : 7.22,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 336.77,
+    "distanceKm" : 161.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:47:00",
+    "latitude" : -19.96861,
+    "longitude" : -42.3799,
+    "frp" : 1.63,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 330.8,
+    "distanceKm" : 203.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:49:00",
+    "latitude" : -17.17472,
+    "longitude" : -45.91744,
+    "frp" : 4.78,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 339.94,
+    "distanceKm" : 309.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-19",
+    "detectedAt" : "2026-11-19T13:49:00",
+    "latitude" : -16.53823,
+    "longitude" : -47.77472,
+    "frp" : 2.93,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 334.66,
+    "distanceKm" : 495.1,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.92353,
+    "longitude" : -43.75692,
+    "frp" : 2.26,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 320.32,
+    "distanceKm" : 387.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.91998,
+    "longitude" : -43.75619,
+    "frp" : 3.36,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 328.28,
+    "distanceKm" : 387.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.91323,
+    "longitude" : -43.73227,
+    "frp" : 6.88,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 333.03,
+    "distanceKm" : 387.0,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.91122,
+    "longitude" : -43.72882,
+    "frp" : 2.09,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 304.03,
+    "distanceKm" : 386.9,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.91046,
+    "longitude" : -43.73317,
+    "frp" : 3.01,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 331.48,
+    "distanceKm" : 386.7,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.9097,
+    "longitude" : -43.73751,
+    "frp" : 3.01,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 307.18,
+    "distanceKm" : 386.6,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.90969,
+    "longitude" : -43.73154,
+    "frp" : 4.09,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 320.4,
+    "distanceKm" : 386.6,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.90895,
+    "longitude" : -43.74186,
+    "frp" : 1.82,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 309.35,
+    "distanceKm" : 386.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.90813,
+    "longitude" : -43.74022,
+    "frp" : 2.59,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 318.2,
+    "distanceKm" : 386.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.90616,
+    "longitude" : -43.73678,
+    "frp" : 3.01,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 309.66,
+    "distanceKm" : 386.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.90537,
+    "longitude" : -43.73515,
+    "frp" : 4.09,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 339.12,
+    "distanceKm" : 386.1,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.90337,
+    "longitude" : -43.73169,
+    "frp" : 3.01,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 304.67,
+    "distanceKm" : 386.0,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.90312,
+    "longitude" : -43.75417,
+    "frp" : 2.03,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 310.92,
+    "distanceKm" : 385.6,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.90261,
+    "longitude" : -43.73604,
+    "frp" : 3.01,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 336.29,
+    "distanceKm" : 385.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.90225,
+    "longitude" : -43.7525,
+    "frp" : 2.82,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 323.57,
+    "distanceKm" : 385.5,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.89957,
+    "longitude" : -43.75343,
+    "frp" : 1.38,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 313.52,
+    "distanceKm" : 385.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.78601,
+    "longitude" : -43.75871,
+    "frp" : 0.76,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 302.18,
+    "distanceKm" : 372.6,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -22.67474,
+    "longitude" : -43.47863,
+    "frp" : 0.41,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 303.61,
+    "distanceKm" : 365.6,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -21.94679,
+    "longitude" : -47.02022,
+    "frp" : 1.13,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 308.67,
+    "distanceKm" : 399.1,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -21.20004,
+    "longitude" : -43.81869,
+    "frp" : 0.76,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 306.36,
+    "distanceKm" : 197.9,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T00:59:00",
+    "latitude" : -20.87584,
+    "longitude" : -47.68122,
+    "frp" : 1.04,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 301.45,
+    "distanceKm" : 391.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:28:00",
+    "latitude" : -22.92562,
+    "longitude" : -43.75653,
+    "frp" : 2.91,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 330.64,
+    "distanceKm" : 388.1,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:28:00",
+    "latitude" : -22.92199,
+    "longitude" : -43.75709,
+    "frp" : 2.91,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 337.03,
+    "distanceKm" : 387.6,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:28:00",
+    "latitude" : -22.92196,
+    "longitude" : -43.75449,
+    "frp" : 6.83,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 335.36,
+    "distanceKm" : 387.7,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:28:00",
+    "latitude" : -22.91541,
+    "longitude" : -43.73233,
+    "frp" : 4.69,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 335.71,
+    "distanceKm" : 387.3,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:28:00",
+    "latitude" : -22.91473,
+    "longitude" : -43.73044,
+    "frp" : 10.62,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 344.4,
+    "distanceKm" : 387.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:28:00",
+    "latitude" : -22.9123,
+    "longitude" : -43.74006,
+    "frp" : 5.56,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 330.04,
+    "distanceKm" : 386.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:28:00",
+    "latitude" : -22.90867,
+    "longitude" : -43.7406,
+    "frp" : 4.36,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 334.25,
+    "distanceKm" : 386.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:28:00",
+    "latitude" : -22.90807,
+    "longitude" : -43.73608,
+    "frp" : 7.43,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 337.68,
+    "distanceKm" : 386.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:28:00",
+    "latitude" : -22.90746,
+    "longitude" : -43.73155,
+    "frp" : 7.43,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 337.7,
+    "distanceKm" : 386.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:28:00",
+    "latitude" : -22.90259,
+    "longitude" : -43.75077,
+    "frp" : 5.03,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 332.81,
+    "distanceKm" : 385.6,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:28:00",
+    "latitude" : -22.51359,
+    "longitude" : -44.1005,
+    "frp" : 9.39,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 337.98,
+    "distanceKm" : 339.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:28:00",
+    "latitude" : -21.53664,
+    "longitude" : -45.30779,
+    "frp" : 4.01,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 330.43,
+    "distanceKm" : 255.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -21.63589,
+    "longitude" : -48.03131,
+    "frp" : 7.64,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 340.59,
+    "distanceKm" : 462.0,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -21.63536,
+    "longitude" : -48.02638,
+    "frp" : 9.93,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 342.49,
+    "distanceKm" : 461.6,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -21.63075,
+    "longitude" : -48.02695,
+    "frp" : 7.49,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 344.41,
+    "distanceKm" : 461.3,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -21.00544,
+    "longitude" : -47.00957,
+    "frp" : 3.61,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 328.91,
+    "distanceKm" : 335.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -20.96769,
+    "longitude" : -45.96242,
+    "frp" : 10.0,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 341.88,
+    "distanceKm" : 244.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -20.25113,
+    "longitude" : -40.24173,
+    "frp" : 3.37,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 333.81,
+    "distanceKm" : 427.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -20.2478,
+    "longitude" : -40.24232,
+    "frp" : 3.37,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 340.29,
+    "distanceKm" : 427.7,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -20.24114,
+    "longitude" : -40.24349,
+    "frp" : 6.92,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 344.45,
+    "distanceKm" : 427.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -20.24056,
+    "longitude" : -40.23978,
+    "frp" : 6.92,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 332.21,
+    "distanceKm" : 427.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -20.23549,
+    "longitude" : -40.22923,
+    "frp" : 2.17,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 330.75,
+    "distanceKm" : 428.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -20.23274,
+    "longitude" : -40.23353,
+    "frp" : 3.32,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 331.48,
+    "distanceKm" : 428.3,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -19.68788,
+    "longitude" : -42.05749,
+    "frp" : 2.08,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 331.42,
+    "distanceKm" : 230.7,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -19.60872,
+    "longitude" : -44.05882,
+    "frp" : 6.93,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 335.19,
+    "distanceKm" : 25.3,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -19.48523,
+    "longitude" : -42.54494,
+    "frp" : 7.18,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 341.38,
+    "distanceKm" : 178.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -19.48358,
+    "longitude" : -42.53358,
+    "frp" : 3.85,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 335.31,
+    "distanceKm" : 179.6,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -18.53089,
+    "longitude" : -42.15738,
+    "frp" : 5.68,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 334.91,
+    "distanceKm" : 243.0,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -17.36978,
+    "longitude" : -46.63267,
+    "frp" : 9.01,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 340.42,
+    "distanceKm" : 343.0,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-20",
+    "detectedAt" : "2026-11-20T13:30:00",
+    "latitude" : -17.36826,
+    "longitude" : -46.63622,
+    "frp" : 10.09,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 328.81,
+    "distanceKm" : 343.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-21",
+    "detectedAt" : "2026-11-21T13:09:00",
+    "latitude" : -22.90637,
+    "longitude" : -43.7317,
+    "frp" : 4.99,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 328.21,
+    "distanceKm" : 386.3,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-22",
+    "detectedAt" : "2026-11-22T00:21:00",
+    "latitude" : -20.24766,
+    "longitude" : -40.2453,
+    "frp" : 1.99,
+    "confidence" : "n",
+    "daynight" : "N",
+    "brightTi4" : 316.97,
+    "distanceKm" : 427.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-22",
+    "detectedAt" : "2026-11-22T12:52:00",
+    "latitude" : -21.67957,
+    "longitude" : -41.9183,
+    "frp" : 4.13,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 330.34,
+    "distanceKm" : 345.5,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-22",
+    "detectedAt" : "2026-11-22T12:52:00",
+    "latitude" : -17.40088,
+    "longitude" : -43.64595,
+    "frp" : 0.85,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 329.77,
+    "distanceKm" : 238.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-22",
+    "detectedAt" : "2026-11-22T12:52:00",
+    "latitude" : -16.92855,
+    "longitude" : -42.29413,
+    "frp" : 6.65,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 355.37,
+    "distanceKm" : 349.5,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-22",
+    "detectedAt" : "2026-11-22T12:52:00",
+    "latitude" : -16.9282,
+    "longitude" : -42.29066,
+    "frp" : 6.65,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 335.5,
+    "distanceKm" : 349.7,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-22",
+    "detectedAt" : "2026-11-22T14:32:00",
+    "latitude" : -17.13587,
+    "longitude" : -45.94445,
+    "frp" : 2.78,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 332.37,
+    "distanceKm" : 315.0,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-22",
+    "detectedAt" : "2026-11-22T14:34:00",
+    "latitude" : -17.13486,
+    "longitude" : -45.94749,
+    "frp" : 4.22,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 330.26,
+    "distanceKm" : 315.3,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T12:33:00",
+    "latitude" : -18.96357,
+    "longitude" : -39.79423,
+    "frp" : 1.01,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 336.81,
+    "distanceKm" : 470.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T12:33:00",
+    "latitude" : -18.95766,
+    "longitude" : -41.4577,
+    "frp" : 2.12,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 335.75,
+    "distanceKm" : 298.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T12:35:00",
+    "latitude" : -17.29061,
+    "longitude" : -40.28697,
+    "frp" : 5.37,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 327.02,
+    "distanceKm" : 482.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -18.40506,
+    "longitude" : -40.03503,
+    "frp" : 7.48,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 341.82,
+    "distanceKm" : 458.4,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -18.40189,
+    "longitude" : -40.03423,
+    "frp" : 8.39,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 342.21,
+    "distanceKm" : 458.6,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -18.16365,
+    "longitude" : -48.21001,
+    "frp" : 12.85,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 341.71,
+    "distanceKm" : 441.5,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -17.82665,
+    "longitude" : -44.54575,
+    "frp" : 13.96,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 341.33,
+    "distanceKm" : 185.0,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -17.61809,
+    "longitude" : -40.758,
+    "frp" : 5.86,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 344.55,
+    "distanceKm" : 421.3,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -17.6177,
+    "longitude" : -40.75527,
+    "frp" : 7.4,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 346.38,
+    "distanceKm" : 421.5,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -17.61696,
+    "longitude" : -40.75294,
+    "frp" : 5.86,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 340.75,
+    "distanceKm" : 421.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -17.61176,
+    "longitude" : -40.75734,
+    "frp" : 7.4,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 348.06,
+    "distanceKm" : 421.7,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -17.61103,
+    "longitude" : -40.75504,
+    "frp" : 11.5,
+    "confidence" : "l",
+    "daynight" : "D",
+    "brightTi4" : 356.65,
+    "distanceKm" : 421.9,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -17.61069,
+    "longitude" : -40.75238,
+    "frp" : 7.4,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 336.27,
+    "distanceKm" : 422.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -17.48723,
+    "longitude" : -42.00824,
+    "frp" : 6.32,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 348.78,
+    "distanceKm" : 322.7,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -16.6984,
+    "longitude" : -41.30666,
+    "frp" : 8.79,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 339.06,
+    "distanceKm" : 437.3,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -16.47377,
+    "longitude" : -46.1004,
+    "frp" : 4.82,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 334.8,
+    "distanceKm" : 386.2,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -15.89337,
+    "longitude" : -46.17729,
+    "frp" : 5.03,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 331.01,
+    "distanceKm" : 446.8,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -15.75377,
+    "longitude" : -42.86356,
+    "frp" : 3.02,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 333.29,
+    "distanceKm" : 438.0,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -15.65957,
+    "longitude" : -42.93397,
+    "frp" : 8.51,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 338.38,
+    "distanceKm" : 445.5,
+    "insideMunicipality" : false
+  }, {
+    "acqDate" : "2026-11-23",
+    "detectedAt" : "2026-11-23T14:13:00",
+    "latitude" : -15.65879,
+    "longitude" : -42.93013,
+    "frp" : 9.36,
+    "confidence" : "n",
+    "daynight" : "D",
+    "brightTi4" : 350.55,
+    "distanceKm" : 445.7,
+    "insideMunicipality" : false
+  } ]
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FireRisk — Monitor de Risco de Incêndio</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar">
+    <form id="filters" novalidate>
+      <h2>O que analisar</h2>
+
+      <label for="uf">Estado</label>
+      <select id="uf"></select>
+
+      <label for="city">Cidade</label>
+      <div class="combobox">
+        <input id="city" type="text" role="combobox" autocomplete="off" spellcheck="false"
+               placeholder="Digite o nome da cidade" aria-autocomplete="list" aria-expanded="false"
+               aria-controls="city-options" aria-describedby="city-help">
+        <ul id="city-options" role="listbox" aria-label="Cidades" hidden></ul>
+      </div>
+      <p class="hint" id="city-help">Acentos e maiúsculas não importam.</p>
+
+      <label for="days">Período dos focos: <output id="days-value" for="days">5 dias</output></label>
+      <input id="days" type="range" min="1" max="5" value="5">
+
+      <label for="radius">Distância ao redor da cidade: <output id="radius-value" for="radius">100 km</output></label>
+      <input id="radius" type="range" min="25" max="500" step="25" value="100">
+      <p class="hint">Raios maiores tendem a aumentar o risco calculado.</p>
+
+      <button id="analyze" class="primary" type="submit">🔍 Analisar</button>
+      <button id="cancel" class="secondary" type="button" hidden>Cancelar</button>
+    </form>
+
+    <div id="recent-block" hidden>
+      <hr>
+      <p class="hint">Cidades recentes</p>
+      <div id="recent" class="stack"></div>
+    </div>
+
+    <hr>
+    <div class="stack">
+      <button id="undo" class="secondary" type="button" hidden></button>
+      <button id="reset" class="secondary" type="button">Restaurar padrão</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header>
+      <h1>🔥 FireRisk — Monitor de Risco de Incêndio</h1>
+      <p class="caption">Focos de calor por satélite, clima e limites municipais para qualquer cidade do Brasil.</p>
+    </header>
+
+    <div id="loading" class="status info" role="status" hidden>
+      <span class="spinner" aria-hidden="true"></span>
+      <span id="loading-text"></span>
+    </div>
+
+    <div id="error" class="status error" role="alert" hidden>
+      <strong id="error-title"></strong>
+      <p id="error-hint"></p>
+      <p id="suggestions-label" hidden>Você quis dizer:</p>
+      <div id="suggestions" class="chips"></div>
+      <button id="retry" class="secondary inline" type="button" hidden>Tentar novamente</button>
+      <p id="error-keep" class="hint" hidden></p>
+    </div>
+
+    <div id="stale" class="status warning" role="status" hidden></div>
+
+    <section id="results" hidden>
+
+      <div id="offline" class="status warning" role="status" hidden></div>
+
+      <div class="summary">
+        <div>
+          <span id="risk-badge" class="badge"></span>
+          <h2 id="risk-title"></h2>
+          <p id="risk-meaning"></p>
+          <p id="risk-meta" class="hint"></p>
+        </div>
+        <button id="refresh" class="secondary" type="button"
+                title="Busca os dados mais recentes, ignorando os que estão em memória">↻ Atualizar dados</button>
+      </div>
+
+      <div class="metrics" id="main-metrics"></div>
+      <p id="low-note" class="hint" hidden></p>
+
+      <div id="no-fires" class="status success" hidden></div>
+      <div id="saturated" class="status info" hidden>
+        Há 100 focos ou mais na área, o limite da fórmula. Aumentar a distância não elevará mais essa parte do índice.
+      </div>
+
+      <div class="split">
+        <div class="panel">
+          <h3>Mapa de focos de calor</h3>
+          <div id="map" role="application" aria-label="Mapa com os focos de calor ao redor da cidade"></div>
+          <p class="hint" id="map-legend"></p>
+        </div>
+        <div class="panel">
+          <h3>Índice de risco</h3>
+          <div id="gauge"></div>
+          <ul class="bands">
+            <li><span class="dot low"></span><strong>Baixo</strong> abaixo de 3</li>
+            <li><span class="dot moderate"></span><strong>Moderado</strong> de 3 a 6</li>
+            <li><span class="dot high"></span><strong>Alto</strong> a partir de 6</li>
+          </ul>
+          <p class="hint" id="biome-note"></p>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Detalhes da análise">
+        <button role="tab" id="tab-climate" aria-controls="panel-climate" aria-selected="true">Clima (30 dias)</button>
+        <button role="tab" id="tab-fires" aria-controls="panel-fires" aria-selected="false" tabindex="-1">Focos detectados</button>
+        <button role="tab" id="tab-method" aria-controls="panel-method" aria-selected="false" tabindex="-1">Como o índice é calculado</button>
+        <button role="tab" id="tab-help" aria-controls="panel-help" aria-selected="false" tabindex="-1">Ajuda</button>
+      </div>
+
+      <div id="panel-climate" role="tabpanel" aria-labelledby="tab-climate">
+        <div class="metrics" id="climate-metrics"></div>
+        <div class="panel"><div id="chart-climate"></div></div>
+      </div>
+
+      <div id="panel-fires" role="tabpanel" aria-labelledby="tab-fires" hidden>
+        <p id="fires-empty" class="status info" hidden></p>
+        <div id="fires-content">
+          <div class="panel"><div id="chart-fires"></div></div>
+          <div class="table-tools">
+            <label class="toggle"><input id="only-city" type="checkbox"> <span id="only-city-label"></span></label>
+            <button id="download" class="secondary inline" type="button">⬇ Baixar tabela (CSV)</button>
+          </div>
+          <div class="table-wrap"><table id="fires-table"></table></div>
+          <p id="table-note" class="hint" hidden></p>
+        </div>
+      </div>
+
+      <div id="panel-method" role="tabpanel" aria-labelledby="tab-method" hidden>
+        <pre class="formula">pontuação de focos = min(focos no raio com confiança normal ou alta / 100, 1)
+pontuação de clima = min(temp. máx. média / 40, 1) × max(1 − chuva média / 50, 0)
+índice             = (focos × 0,6 + clima × 0,4) × peso do bioma × 10   (limitado a 10)</pre>
+        <div class="table-wrap"><table id="method-table"></table></div>
+        <p class="hint">Focos de baixa confiança ficam fora do cálculo: a NASA os classifica assim por terem mais
+          chance de ser alarme falso, como reflexo do sol, áreas industriais ou ruído do sensor. Eles continuam
+          visíveis no mapa e na tabela.</p>
+        <p class="hint">Dias sem chuva, vento e umidade são exibidos como contexto e não entram na fórmula.
+          O bioma é o predominante no estado, uma simplificação.</p>
+      </div>
+
+      <div id="panel-help" role="tabpanel" aria-labelledby="tab-help" hidden>
+        <div class="help">
+          <section>
+            <h3>Como usar</h3>
+            <ol>
+              <li>Escolha o estado e digite a cidade na barra lateral.</li>
+              <li>Ajuste o período e a distância, se quiser.</li>
+              <li>Clique em <strong>Analisar</strong> ou pressione Enter.</li>
+              <li>Veja o resumo e explore o mapa e as abas.</li>
+            </ol>
+            <h3>Atalhos</h3>
+            <ul>
+              <li><strong>Cidades recentes</strong> reabrem uma análise com um clique.</li>
+              <li><strong>Voltar</strong> retorna à análise anterior.</li>
+              <li>O <strong>endereço da página</strong> guarda a cidade e os filtros: copie-o para compartilhar.</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Glossário</h3>
+            <dl>
+              <dt>Foco de calor</dt>
+              <dd>Ponto com temperatura anormal detectado por satélite. Pode ser incêndio, queimada controlada ou outra fonte de calor.</dd>
+              <dt>Intensidade (MW)</dt>
+              <dd>Energia irradiada pelo fogo (FRP, <em>Fire Radiative Power</em>).</dd>
+              <dt>Confiança</dt>
+              <dd>Quão segura é a detecção, segundo a NASA: alta, normal ou baixa. Os de baixa confiança aparecem
+                como círculos cinza vazados e não entram no índice.</dd>
+              <dt>Bioma</dt>
+              <dd>Grande tipo de vegetação da região. Alguns recebem peso maior no índice.</dd>
+            </dl>
+            <h3>Se algo der errado</h3>
+            <ul>
+              <li><strong>Cidade não encontrada:</strong> confira o estado e a grafia, ou clique em uma sugestão.</li>
+              <li><strong>Falha ao obter dados:</strong> verifique a internet e clique em Tentar novamente.</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <footer class="hint">
+      Fontes: NASA FIRMS (VIIRS) · Open-Meteo · IBGE. Índice para fins acadêmicos; não substitui alertas oficiais.
+      Em caso de incêndio, ligue <strong>193</strong> (Corpo de Bombeiros).
+    </footer>
+  </main>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

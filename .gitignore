@@ -208,3 +208,16 @@ __marimo__/
 
 # Dados brutos — nunca commitar
 data/raw/
+
+# ── Java / Maven ──────────────────────────────────────────────────────────────
+target/
+!.mvn/wrapper/maven-wrapper.properties
+*.class
+*.jar
+!**/src/main/**/*.jar
+!**/src/test/**/*.jar
+.classpath
+.project
+.settings/
+.idea/
+*.iml

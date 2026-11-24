@@ -1,6 +1,8 @@
 import pandas as pd
 
 class RiskProcessor:
+    _DRY_DAY_MM = 1.0  # abaixo disso o dia conta como sem chuva
+
     @staticmethod
     def process(climate_df, firms_df, biome="Desconhecido"):
         firms_df = firms_df.rename(columns={"acq_date": "date"})
@@ -25,7 +27,29 @@ class RiskProcessor:
             "total_fires": len(firms_df),
             "avg_temp": round(df["temperature_max"].mean(), 1),
             "avg_rain": round(df["precipitation"].mean(), 1),
-            "risk_index": min(risk_index, 10.0)
+            "risk_index": min(risk_index, 10.0),
+            "fire_score": round(fire_score, 3),
+            "climate_score": round(climate_score, 3),
+            "biome_weight": weight,
+            "dry_days": RiskProcessor._dry_streak(df["precipitation"]),
+            "max_wind": RiskProcessor._stat(df, "windspeed", "max"),
+            "min_humidity": RiskProcessor._stat(df, "humidity_min", "min"),
         }
 
         return df, summary
+
+    @staticmethod
+    def _dry_streak(precipitation):
+        # dias consecutivos sem chuva contando de hoje para tras
+        streak = 0
+        for value in reversed(precipitation.fillna(0).tolist()):
+            if value >= RiskProcessor._DRY_DAY_MM:
+                break
+            streak += 1
+        return streak
+
+    @staticmethod
+    def _stat(df, column, how):
+        if column not in df.columns or df[column].dropna().empty:
+            return None
+        return round(float(getattr(df[column], how)()), 1)
