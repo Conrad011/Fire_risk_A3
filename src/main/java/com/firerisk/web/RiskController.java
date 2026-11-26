@@ -4,8 +4,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.firerisk.model.Analysis;
 import com.firerisk.model.AnalysisRequest;
+import com.firerisk.model.HistoryEntry;
 import com.firerisk.model.State;
 import com.firerisk.service.FireRiskService;
+import com.firerisk.service.HistoryService;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.io.geojson.GeoJsonWriter;
 import org.springframework.http.ResponseEntity;
@@ -26,10 +28,12 @@ import java.util.List;
 public class RiskController {
 
     private final FireRiskService service;
+    private final HistoryService history;
     private final ObjectMapper mapper;
 
-    public RiskController(FireRiskService service, ObjectMapper mapper) {
+    public RiskController(FireRiskService service, HistoryService history, ObjectMapper mapper) {
         this.service = service;
+        this.history = history;
         this.mapper = mapper;
     }
 
@@ -58,6 +62,12 @@ public class RiskController {
 
         Analysis analysis = service.analyze(new AnalysisRequest(city, uf, days, radius));
         return AnalysisResponse.of(analysis, toGeoJson(analysis.geometry()));
+    }
+
+    /** Analises gravadas no banco para o municipio, da mais recente para a mais antiga. */
+    @GetMapping("/history")
+    public List<HistoryEntry> history(@RequestParam String city, @RequestParam String uf) {
+        return history.history(city, uf);
     }
 
     /** Descarta clima e focos em cache. */

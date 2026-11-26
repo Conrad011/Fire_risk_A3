@@ -117,6 +117,7 @@
       <div class="tabs" role="tablist" aria-label="Detalhes da análise">
         <button role="tab" id="tab-climate" aria-controls="panel-climate" aria-selected="true">Clima (30 dias)</button>
         <button role="tab" id="tab-fires" aria-controls="panel-fires" aria-selected="false" tabindex="-1">Focos detectados</button>
+        <button role="tab" id="tab-history" aria-controls="panel-history" aria-selected="false" tabindex="-1">Histórico</button>
         <button role="tab" id="tab-method" aria-controls="panel-method" aria-selected="false" tabindex="-1">Como o índice é calculado</button>
         <button role="tab" id="tab-help" aria-controls="panel-help" aria-selected="false" tabindex="-1">Ajuda</button>
       </div>
@@ -137,6 +138,18 @@
           <div class="table-wrap"><table id="fires-table"></table></div>
           <p id="table-note" class="hint" hidden></p>
         </div>
+      </div>
+
+      <div id="panel-history" role="tabpanel" aria-labelledby="tab-history" hidden>
+        <p id="history-status" class="status info" hidden></p>
+        <div id="history-content" hidden>
+          <div class="panel"><div id="chart-history"></div></div>
+          <h3 class="spaced">Últimas consultas</h3>
+          <div class="table-wrap"><table id="history-table"></table></div>
+        </div>
+        <p class="hint">Cada análise é gravada no banco de dados SQLite do sistema (<code>data/firerisk.db</code>).
+          "Recalculado" indica o índice reconstruído para um dia anterior com os dados que a NASA e o
+          Open-Meteo tinham para aquele dia.</p>
       </div>
 
       <div id="panel-method" role="tabpanel" aria-labelledby="tab-method" hidden>
@@ -165,6 +178,7 @@ pontuação de clima = min(temp. máx. média / 40, 1) × max(1 − chuva média
             <ul>
               <li><strong>Cidades recentes</strong> reabrem uma análise com um clique.</li>
               <li><strong>Voltar</strong> retorna à análise anterior.</li>
+              <li>A aba <strong>Histórico</strong> mostra como o índice da cidade evoluiu nos dias anteriores.</li>
               <li>O <strong>endereço da página</strong> guarda a cidade e os filtros: copie-o para compartilhar.</li>
             </ul>
           </section>

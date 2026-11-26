@@ -34,7 +34,12 @@ public class Climate {
 
     /** Os 30 dias anteriores a {@code end}, mais o proprio {@code end}. */
     public List<ClimateRecord> getDataUntil(double lat, double lon, LocalDate end) {
-        return fetch(lat, lon, "&start_date=" + end.minusDays(PAST_DAYS) + "&end_date=" + end);
+        return getDataBetween(lat, lon, end.minusDays(PAST_DAYS), end);
+    }
+
+    /** Serie diaria de {@code start} a {@code end}, inclusive. */
+    public List<ClimateRecord> getDataBetween(double lat, double lon, LocalDate start, LocalDate end) {
+        return fetch(lat, lon, "&start_date=" + start + "&end_date=" + end);
     }
 
     private List<ClimateRecord> fetch(double lat, double lon, String period) {

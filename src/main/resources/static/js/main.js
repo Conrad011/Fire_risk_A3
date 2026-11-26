@@ -1,11 +1,11 @@
 /**
  * Controlador do dashboard: estado da tela, filtros, histórico e fluxo de análise.
  */
-import { ApiError, fetchMunicipalities, fetchRisk, fetchStates, refreshData } from "./api.js";
+import { ApiError, fetchHistory, fetchMunicipalities, fetchRisk, fetchStates, refreshData } from "./api.js";
 import { resizeCharts } from "./charts.js";
 import { createCombobox } from "./combobox.js";
 import { normalize, plural } from "./format.js";
-import { downloadCsv, renderFiresTable, renderResults } from "./view.js";
+import { downloadCsv, renderFiresTable, renderHistory, renderHistoryError, renderResults } from "./view.js";
 
 const DEFAULTS = { city: "Sete Lagoas", uf: "MG", days: 5, radiusKm: 100 };
 const MAX_RECENT = 4;
@@ -118,6 +118,7 @@ async function analyze(params) {
     setLoading(null);
     renderResults(data);
     activeTabResize();
+    loadHistory(data);
   } catch (e) {
     if (e.name === "AbortError") return;
     state.error = e instanceof ApiError
@@ -129,6 +130,19 @@ async function analyze(params) {
       setLoading(null);
       refreshControls();
     }
+  }
+}
+
+/** O histórico vem depois da análise; se falhar, só a aba Histórico mostra o erro. */
+async function loadHistory(data) {
+  renderHistoryError("Carregando histórico...");
+  try {
+    const entries = await fetchHistory(data.params);
+    if (state.current !== data) return;
+    renderHistory(data, entries);
+    activeTabResize();
+  } catch {
+    if (state.current === data) renderHistoryError("Não foi possível carregar o histórico agora.");
   }
 }
 
@@ -159,6 +173,7 @@ async function undo() {
   syncUrl(state.current.params);
   renderResults(state.current);
   activeTabResize();
+  loadHistory(state.current);
   refreshControls();
 }
 

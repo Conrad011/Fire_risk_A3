@@ -49,7 +49,8 @@ FireRisk/
     │   ├── cli/                       # terminal mode
     │   ├── collectors/                # Climate, Firms, Geocoder, Vegetation
     │   ├── processors/                # RiskProcessor (index formula)
-    │   ├── service/                   # orchestration + cache
+    │   ├── service/                   # orchestration, cache, history, saved data
+    │   ├── repository/                # SQLite access (JdbcTemplate)
     │   ├── web/                       # REST controller, DTOs, error handling
     │   ├── model/                     # domain records and enums
     │   ├── exception/                 # domain errors
@@ -57,11 +58,10 @@ FireRisk/
     │   └── util/                      # HTTP, geographic math, name matching
     ├── main/resources/
     │   ├── application.yml
+    │   ├── schema.sql                 # database tables
     │   └── static/                    # index.html, styles.css, js/ modules
     └── test/java/com/firerisk/        # unit and web tests
 ```
-
-The Python files (`main.py`, `dashboard/`, `src/collectors/*.py`, `src/processors/*.py`) are the original prototype. The Java application is the version to run and present.
 
 ---
 
@@ -162,6 +162,25 @@ Dashboard features:
 - Daily fire count chart and hotspot table with CSV export
 - Index breakdown, help, and glossary
 
+### Database (SQLite)
+
+Every analysis is stored in a SQLite database, `data/firerisk.db`, created automatically on the first run from `src/main/resources/schema.sql`. No database server is needed. The dashboard's **Histórico** tab shows how the city's index evolved and lists the latest queries.
+
+| Table | Content |
+|-------|---------|
+| `municipality` | IBGE code (primary key), name, state, and the coordinates used |
+| `risk_analysis` | One row per analysis: when it ran, the last day covered, filters, index, risk level, hotspot counts, weather averages, satellite, and data source (`live`, `snapshot`, or `backfill`); foreign key to `municipality` |
+
+`CHECK` constraints reject invalid values (period, radius, index range, level, source). Repeating the same query within 10 minutes does not create a new row.
+
+To fill the history with past days, recalculate the index for each of the last N closed days with the data NASA and Open-Meteo had for that day (5 days, 100 km; up to 55 days back; days already stored are skipped):
+
+```bash
+java -jar target/firerisk-1.0.0.jar --cli --backfill --city="Sete Lagoas" --uf=MG --days-back=30
+```
+
+The file is git-ignored. To inspect it, open `data/firerisk.db` in [DB Browser for SQLite](https://sqlitebrowser.org/), or set `FIRERISK_DB` to use another file.
+
 ### Saved data (fallback)
 
 If weather or hotspots cannot be fetched, the dashboard uses the saved data for that city and shows a warning with the date it covers. Saved data lives in `data/snapshot/` (one file per city plus the IBGE name list) and always covers the largest window (5 days, 500 km), so any smaller filter can be cut from it. Cities without a saved file show the usual error.
@@ -183,25 +202,11 @@ NASA FIRMS reports dates and times in UTC. Each hotspot is converted to Brasíli
 |--------|----------|-------------|
 | `GET` | `/api/states` | The 27 states and their predominant biome |
 | `GET` | `/api/municipalities?uf=MG` | Municipality names in a state |
-| `GET` | `/api/risk?city=Sete Lagoas&uf=MG&days=5&radius=100` | Full analysis |
+| `GET` | `/api/risk?city=Sete Lagoas&uf=MG&days=5&radius=100` | Full analysis (also stored in the database) |
+| `GET` | `/api/history?city=Sete Lagoas&uf=MG` | Stored analyses for the city, newest first |
 | `POST` | `/api/refresh` | Discards cached weather and hotspots |
 
 Errors come back as `{"error": "...", "hint": "...", "suggestions": [...]}` with `400` (invalid filters), `404` (city not found), `503` (missing or rejected API key), or `502` (external API failure). Messages never include upstream URLs, because the FIRMS URL carries the API key.
-
-### Python / Streamlit dashboard
-
-The original Python version lives alongside the Java one (`main.py`, `dashboard/app.py`, `src/collectors/*.py`, `src/processors/RiskProcessor.py`). It reads the same `.env` file.
-
-```bash
-python -m venv venv
-venv\Scripts\activate            # Linux/macOS: source venv/bin/activate
-pip install -r requirements.txt
-
-python main.py                                   # terminal mode
-python -m streamlit run dashboard/app.py         # dashboard at http://localhost:8501
-```
-
-The location is chosen by typing the city name and picking the state (default: Sete Lagoas, MG); the name match ignores accents and case. Latitude and longitude come from the Open-Meteo geocoding API (no key), accepted only when the point falls inside the IBGE polygon of that municipality; if the geocoder is unavailable, an interior point of the polygon is used instead. Unlike the Java version, hotspots are searched in a circle around the chosen point (25–500 km, default 100 km) instead of a fixed Amazon bounding box, so `hotspot_count` in the formula is the number of detections inside that radius. The Python version picks the first VIIRS satellite with recent data (NOAA-20, NOAA-21, then S-NPP), because S-NPP stopped publishing on 2026-11-02 and the API still answers with an empty result for it. The dashboard also shows the hotspots inside the municipality polygon, the distance to the nearest one, the current dry-day streak, and a breakdown of how the index was computed.
 
 ---
 
@@ -211,21 +216,23 @@ The location is chosen by typing the city name and picking the state (default: S
 ./mvnw test
 ```
 
-25 tests cover the risk-index formula, FIRMS response parsing, city lookup and suggestions, input validation, and API error handling.
+40 tests cover the risk-index formula, FIRMS response parsing and time-zone conversion, city lookup and suggestions, input validation, saved-data fallback, the SQLite repository (against a real database file), and API error handling.
 
 ---
 
 ## Implementation notes
 
-| Python | Java |
-|--------|------|
-| `pandas.DataFrame` | `record` types (`ClimateRecord`, `FireRecord`, `DailyRisk`) + streams |
-| `shapely` / `geopandas` | [JTS](https://github.com/locationtech/jts) (`jts-core`, `jts-io-common`) |
-| `requests` | `java.net.http.HttpClient` (`util/Http.java`) |
-| `pandas.read_csv` | Apache Commons CSV |
-| `python-dotenv` | `config/DotEnv.java` |
-| `streamlit` + `folium` + `plotly` | Spring Boot + Leaflet.js + Plotly.js |
-| `@st.cache_data` | Spring `@Cacheable` + Caffeine (`service/DataCache.java`, `config/CacheConfig.java`) |
+| Concern | Technology |
+|---------|------------|
+| Web server and REST API | Spring Boot 3 (`web/`) |
+| Domain data | Java `record` types (`ClimateRecord`, `FireRecord`, `DailyRisk`, ...) + streams |
+| Geometry (point in polygon, interior point) | [JTS](https://github.com/locationtech/jts) (`jts-core`, `jts-io-common`) |
+| HTTP calls to external APIs | `java.net.http.HttpClient` (`util/Http.java`) |
+| FIRMS CSV parsing | Apache Commons CSV |
+| `.env` loading | `config/DotEnv.java` |
+| Database | SQLite + Spring `JdbcTemplate` (`repository/`) |
+| Cache | Spring `@Cacheable` + Caffeine (`service/DataCache.java`, `config/CacheConfig.java`) |
+| Dashboard | HTML + JavaScript modules, Leaflet.js, Plotly.js |
 
 Cache lifetimes: hotspots 15 minutes, weather 1 hour, city location 1 day, municipality boundaries until restart.
 
@@ -240,7 +247,7 @@ Cache lifetimes: hotspots 15 minutes, weather 1 hour, city location 1 day, munic
 | [IBGE](https://servicodados.ibge.gov.br/) | Municipality boundaries & metadata | Open Government Data |
 | [Esri](https://www.arcgis.com/home/item.html?id=358ec1e175ea41c3bf5c68f0da11ae2b) | Dark Gray Canvas basemap tiles | Esri Terms of Use |
 
-> The original Python dashboard used CartoDB `dark_matter` tiles through Folium. CARTO now requires an API key for those, so the dashboard uses Esri's Dark Gray Canvas (no key).
+> The map uses Esri's Dark Gray Canvas because CARTO's dark tiles now require an API key.
 
 ---
 

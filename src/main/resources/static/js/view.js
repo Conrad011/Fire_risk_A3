@@ -1,4 +1,4 @@
-import { renderClimateChart, renderFiresChart, renderGauge } from "./charts.js";
+import { renderClimateChart, renderFiresChart, renderGauge, renderHistoryChart } from "./charts.js";
 import { date, dateTime, isLowConfidence, number, plural, time } from "./format.js";
 import { renderMap } from "./map.js";
 
@@ -168,6 +168,49 @@ function renderMethod(data) {
       [`(${number(firePart, 3)} + ${number(climatePart, 3)}) × ${number(s.biomeWeight)} × 10`]]),
   );
   el("method-table").replaceChildren(head, body);
+}
+
+const SOURCES = { live: "Ao vivo", snapshot: "Dados salvos", backfill: "Recalculado" };
+const MAX_HISTORY_ROWS = 20;
+
+function showHistoryStatus(text) {
+  el("history-content").hidden = text !== null;
+  el("history-status").hidden = text === null;
+  el("history-status").textContent = text || "";
+}
+
+/** Gráfico com os filtros atuais (um ponto por dia, o mais recente) e tabela com todas as consultas. */
+export function renderHistory(data, entries) {
+  const { params, municipality: city } = data;
+  if (entries.length === 0) {
+    showHistoryStatus(`Ainda não há histórico gravado para ${city.nome}.`);
+    return;
+  }
+  showHistoryStatus(null);
+
+  const byDay = new Map();
+  entries
+    .filter((e) => e.days === params.days && e.radiusKm === params.radiusKm)
+    .forEach((e) => { if (!byDay.has(e.referenceDate)) byDay.set(e.referenceDate, e); });
+  const points = [...byDay.values()].sort((a, b) => a.referenceDate.localeCompare(b.referenceDate));
+
+  el("chart-history").hidden = points.length === 0;
+  if (points.length > 0) renderHistoryChart(points, params);
+
+  const head = document.createElement("thead");
+  head.append(row("th", [["Consultado em"], ["Dados até"], ["Período"], ["Distância"], ["Índice", true],
+    ["Nível"], ["Focos", true], ["Fonte"]]));
+  const body = document.createElement("tbody");
+  body.append(...entries.slice(0, MAX_HISTORY_ROWS).map((e) => row("td", [
+    [dateTime(e.analyzedAt)], [date(e.referenceDate)], [plural(e.days, "dia", "dias")], [e.radiusKm + " km"],
+    [number(e.riskIndex, 2), true], [e.level.label], [number(e.firesCounted, 0), true],
+    [SOURCES[e.dataSource] || e.dataSource],
+  ])));
+  el("history-table").replaceChildren(head, body);
+}
+
+export function renderHistoryError(message) {
+  showHistoryStatus(message);
 }
 
 /** A seção precisa estar visível antes: Leaflet e Plotly medem o container. */

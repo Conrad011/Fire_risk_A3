@@ -26,6 +26,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyDouble;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 class FireRiskServiceTest {
@@ -35,7 +36,8 @@ class FireRiskServiceTest {
 
     private final DataCache cache = mock(DataCache.class);
     private final SnapshotStore snapshots = mock(SnapshotStore.class);
-    private final FireRiskService service = new FireRiskService(cache, snapshots);
+    private final HistoryService history = mock(HistoryService.class);
+    private final FireRiskService service = new FireRiskService(cache, snapshots, history);
 
     private final GeoFeature feature = new GeoFeature("3167202", "Sete Lagoas", "MG",
             new GeometryFactory().toGeometry(new org.locationtech.jts.geom.Envelope(-45, -44, -20, -19)));
@@ -58,6 +60,7 @@ class FireRiskServiceTest {
 
         assertEquals("live", analysis.dataSource().mode());
         assertNull(analysis.dataSource().referenceDate());
+        verify(history).record(analysis);
     }
 
     @Test

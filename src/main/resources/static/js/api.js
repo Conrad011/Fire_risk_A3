@@ -43,4 +43,7 @@ export const fetchRisk = (params, signal) =>
     city: params.city, uf: params.uf, days: params.days, radius: params.radiusKm,
   }), { signal });
 
+export const fetchHistory = (params) =>
+  request("/api/history?" + new URLSearchParams({ city: params.city, uf: params.uf }));
+
 export const refreshData = () => request("/api/refresh", { method: "POST" });

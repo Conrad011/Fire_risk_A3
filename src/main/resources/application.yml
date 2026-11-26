@@ -8,6 +8,17 @@ spring:
   mvc:
     problemdetails:
       enabled: false
+  # Historico das analises. foreign_keys=on: o SQLite so valida chaves estrangeiras se pedido.
+  datasource:
+    url: jdbc:sqlite:${FIRERISK_DB:data/firerisk.db}?foreign_keys=on
+    driver-class-name: org.sqlite.JDBC
+    hikari:
+      # O SQLite aceita um escritor por vez; uma conexao evita erros de "database is locked"
+      maximum-pool-size: 1
+  sql:
+    init:
+      # Cria as tabelas na primeira execucao (o script usa IF NOT EXISTS)
+      mode: always
 
 server:
   port: ${PORT:8080}

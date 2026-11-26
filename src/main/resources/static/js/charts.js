@@ -98,6 +98,35 @@ export function renderFiresChart(data) {
   }, CONFIG);
 }
 
+/** Evolução do índice por dia, com as faixas de risco marcadas. */
+export function renderHistoryChart(points, params) {
+  const band = (y, color) => ({
+    type: "line", xref: "paper", x0: 0, x1: 1, y0: y, y1: y,
+    line: { color, width: 1, dash: "dot" },
+  });
+
+  Plotly.react("chart-history", [{
+    type: "scatter",
+    mode: "lines+markers",
+    x: points.map((p) => p.referenceDate),
+    y: points.map((p) => p.riskIndex),
+    line: { color: "#9aa4af", width: 2 },
+    marker: { size: 8, color: points.map((p) => RISK_COLORS[p.level.code]) },
+    hovertemplate: "%{x|%d/%m/%Y}<br>Índice %{y:.2f}<extra></extra>",
+  }], {
+    ...LAYOUT,
+    title: {
+      text: `Evolução do índice (${params.days} ${params.days === 1 ? "dia" : "dias"}, ${params.radiusKm} km)`,
+      font: { size: 14 },
+    },
+    height: 300,
+    margin: { t: 40, b: 36, l: 50, r: 20 },
+    xaxis: { type: "date", tickformat: "%d/%m", gridcolor: "#2a313c" },
+    yaxis: { title: "Índice", range: [0, 10], gridcolor: "#2a313c" },
+    shapes: [band(3, RISK_COLORS.moderate), band(6, RISK_COLORS.high)],
+  }, CONFIG);
+}
+
 /** Gráficos desenhados em aba oculta precisam medir o container ao aparecer. */
 export function resizeCharts(panel) {
   panel.querySelectorAll(".js-plotly-plot").forEach((chart) => Plotly.Plots.resize(chart));

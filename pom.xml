@@ -38,6 +38,16 @@
             <artifactId>caffeine</artifactId>
         </dependency>
 
+        <!-- Banco de dados: historico das analises em SQLite (arquivo unico, sem servidor) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+        </dependency>
+
         <!-- Geometria: equivalente a shapely/geopandas -->
         <dependency>
             <groupId>org.locationtech.jts</groupId>

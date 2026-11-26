@@ -7,6 +7,7 @@ import com.firerisk.model.AnalysisRequest;
 import com.firerisk.model.RiskSummary;
 import com.firerisk.model.Snapshot;
 import com.firerisk.service.FireRiskService;
+import com.firerisk.service.HistoryService;
 import com.firerisk.service.SnapshotService;
 import com.firerisk.util.Brasilia;
 import org.springframework.boot.ApplicationArguments;
@@ -26,7 +27,7 @@ import java.util.Locale;
  *
  * <p>Ativado por {@code --cli}. Aceita {@code --city}, {@code --uf}, {@code --days} e
  * {@code --radius}; o padrao e Sete Lagoas/MG, 5 dias e 100 km. Com {@code --snapshot}
- * grava os dados de contingencia em vez de analisar.</p>
+ * grava os dados de contingencia; com {@code --backfill}, recalcula o historico no banco.</p>
  */
 @Component
 @ConditionalOnProperty(name = "firerisk.cli", havingValue = "true")
@@ -39,11 +40,14 @@ public class FireRiskCli implements ApplicationRunner {
 
     private final FireRiskService service;
     private final SnapshotService snapshots;
+    private final HistoryService history;
     private final ConfigurableApplicationContext context;
 
-    public FireRiskCli(FireRiskService service, SnapshotService snapshots, ConfigurableApplicationContext context) {
+    public FireRiskCli(FireRiskService service, SnapshotService snapshots, HistoryService history,
+                       ConfigurableApplicationContext context) {
         this.service = service;
         this.snapshots = snapshots;
+        this.history = history;
         this.context = context;
     }
 
@@ -51,6 +55,10 @@ public class FireRiskCli implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         if (args.containsOption("snapshot")) {
             saveSnapshot(args);
+            return;
+        }
+        if (args.containsOption("backfill")) {
+            backfill(args);
             return;
         }
         Analysis analysis;
@@ -100,6 +108,29 @@ public class FireRiskCli implements ApplicationRunner {
                 snapshot.radiusKm(), snapshot.days());
         System.out.printf(Locale.ROOT, "Dias de clima: %d%n", snapshot.climate().size());
         System.out.printf(Locale.ROOT, "Arquivo      : %s%n", saved.file().toAbsolutePath());
+        context.close();
+    }
+
+    /** {@code --backfill [--city] [--uf] [--days-back=30]}: recalcula o indice dos dias anteriores. */
+    private void backfill(ApplicationArguments args) {
+        HistoryService.BackfillResult result;
+        try {
+            String city = textArg(args, "city", DEFAULT_CITY);
+            String uf = textArg(args, "uf", DEFAULT_UF);
+            int daysBack = intArg(args, "days-back", 30);
+            System.out.println("Recalculando o indice de " + city + " / " + uf + " nos ultimos " + daysBack + " dias...");
+            result = history.backfill(city, uf, daysBack);
+        } catch (RuntimeException e) {
+            fail(e.getMessage());
+            return;
+        }
+        System.out.println();
+        System.out.println("--- HISTORICO ---");
+        System.out.printf(Locale.ROOT, "Municipio    : %s%n", result.municipality());
+        System.out.printf(Locale.ROOT, "Periodo      : %s a %s (%d dias, %d km)%n", result.first(), result.last(),
+                HistoryService.BACKFILL_DAYS, HistoryService.BACKFILL_RADIUS_KM);
+        System.out.printf(Locale.ROOT, "Gravados     : %d%n", result.saved());
+        System.out.printf(Locale.ROOT, "Ja existiam  : %d%n", result.skipped());
         context.close();
     }
 

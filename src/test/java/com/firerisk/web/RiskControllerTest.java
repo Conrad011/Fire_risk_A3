@@ -3,6 +3,7 @@ package com.firerisk.web;
 import com.firerisk.exception.MunicipalityNotFoundException;
 import com.firerisk.exception.UpstreamException;
 import com.firerisk.service.FireRiskService;
+import com.firerisk.service.HistoryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -28,6 +29,9 @@ class RiskControllerTest {
 
     @MockBean
     private FireRiskService service;
+
+    @MockBean
+    private HistoryService history;
 
     @Test
     void listaOs27Estados() throws Exception {

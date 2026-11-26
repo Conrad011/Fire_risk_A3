@@ -41,17 +41,20 @@ public class FireRiskService {
 
     private final DataCache cache;
     private final SnapshotStore snapshots;
+    private final HistoryService history;
 
-    public FireRiskService(DataCache cache, SnapshotStore snapshots) {
+    public FireRiskService(DataCache cache, SnapshotStore snapshots, HistoryService history) {
         this.cache = cache;
         this.snapshots = snapshots;
+        this.history = history;
     }
 
     /**
      * Executa a analise para o municipio e filtros informados.
      *
      * <p>Se clima ou focos nao puderem ser obtidos e houver dados salvos do municipio,
-     * a analise usa esses dados e informa isso em {@link DataSource}.</p>
+     * a analise usa esses dados e informa isso em {@link DataSource}. Toda analise e
+     * gravada no historico.</p>
      *
      * @throws MunicipalityNotFoundException se o nome nao existir na UF
      */
@@ -83,8 +86,10 @@ public class FireRiskService {
         List<FireRecord> fires = markInside(batch.fires(), feature.geometry());
         RiskResult result = RiskProcessor.process(climate, fires, state.getBiome());
 
-        return new Analysis(request.withCity(feature.nome()), municipality, feature.geometry(), batch.satellite(),
-                source, climate, fires, result, Brasilia.now());
+        Analysis analysis = new Analysis(request.withCity(feature.nome()), municipality, feature.geometry(),
+                batch.satellite(), source, climate, fires, result, Brasilia.now());
+        history.record(analysis);
+        return analysis;
     }
 
     /** Nomes oficiais dos municipios da UF, para o autocompletar. */
