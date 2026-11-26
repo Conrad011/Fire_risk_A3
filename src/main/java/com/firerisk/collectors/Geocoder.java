@@ -25,8 +25,12 @@ public class Geocoder {
 
     private static final String SERVICE = "Open-Meteo Geocoding";
 
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper;
     private final GeometryFactory geometryFactory = new GeometryFactory();
+
+    public Geocoder(ObjectMapper mapper) {
+        this.mapper = mapper;
+    }
 
     /** Devolve vazio se o servico falhar ou nao houver resultado dentro do municipio. */
     public Optional<Point> findUrbanCenter(String name, Geometry polygon) {

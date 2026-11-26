@@ -41,6 +41,13 @@ public final class RiskProcessor {
     /** Abaixo disso o dia conta como sem chuva. */
     private static final double DRY_DAY_MM = 1.0;
 
+    private static final double MAX_FIRES_SATURATION = 100.0;
+    private static final double MAX_TEMP_C = 40.0;
+    private static final double MAX_RAIN_MM = 50.0;
+    private static final double FIRE_WEIGHT = 0.6;
+    private static final double CLIMATE_WEIGHT = 0.4;
+    private static final double MAX_RISK_INDEX = 10.0;
+
     private RiskProcessor() {
     }
 
@@ -68,9 +75,11 @@ public final class RiskProcessor {
         double avgRain = values(daily, DailyRisk::precipitation).average().orElse(Double.NaN);
         double weight = BIOME_WEIGHT.getOrDefault(biome, 1.0);
 
-        double fireScore = Math.min(fires.size() / 100.0, 1.0);
-        double climateScore = Math.min(avgTemp / 40.0, 1.0) * Math.max(1 - avgRain / 50.0, 0.0);
-        double riskIndex = Math.min(round((fireScore * 0.6 + climateScore * 0.4) * weight * 10, 2), 10.0);
+        double fireScore = Math.min(fires.size() / MAX_FIRES_SATURATION, 1.0);
+        double climateScore = Math.min(avgTemp / MAX_TEMP_C, 1.0) * Math.max(1 - avgRain / MAX_RAIN_MM, 0.0);
+        double riskIndex = Math.min(
+                round((fireScore * FIRE_WEIGHT + climateScore * CLIMATE_WEIGHT) * weight * MAX_RISK_INDEX, 2),
+                MAX_RISK_INDEX);
 
         RiskSummary summary = new RiskSummary(
                 biome,

@@ -42,11 +42,14 @@ public class Vegetation {
     private static final String MUNICIPIOS_URL =
             "https://servicodados.ibge.gov.br/api/v1/localidades/municipios";
 
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper;
     private final Path geojsonPath;
 
-    public Vegetation(@Value("${firerisk.geojson-path:data/raw/municipios.geojson}") String geojsonPath) {
+    public Vegetation(
+            @Value("${firerisk.geojson-path:data/raw/municipios.geojson}") String geojsonPath,
+            ObjectMapper mapper) {
         this.geojsonPath = Path.of(geojsonPath);
+        this.mapper = mapper;
     }
 
     /** Baixa a malha municipal do IBGE e grava em {@code firerisk.geojson-path}. */

@@ -9,8 +9,7 @@ import java.util.List;
 /**
  * Carrega um arquivo {@code .env} para as propriedades de sistema.
  *
- * <p>Equivalente ao {@code python-dotenv}: mantem a chave da NASA FIRMS fora do
- * codigo-fonte, no mesmo arquivo que o projeto Python ja usava. Valores ja
+ * <p>Mantem a chave da NASA FIRMS fora do codigo-fonte. Valores ja
  * definidos no ambiente tem precedencia e nao sao sobrescritos.</p>
  */
 public final class DotEnv {

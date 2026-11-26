@@ -22,7 +22,11 @@ public class Climate {
     private static final String SERVICE = "Open-Meteo";
     private static final int PAST_DAYS = 30;
 
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper;
+
+    public Climate(ObjectMapper mapper) {
+        this.mapper = mapper;
+    }
 
     /**
      * Ultimos 30 dias ate hoje; {@code forecast_days=1} evita que dias de
