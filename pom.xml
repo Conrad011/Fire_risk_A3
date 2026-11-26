@@ -48,7 +48,7 @@
             <artifactId>sqlite-jdbc</artifactId>
         </dependency>
 
-        <!-- Geometria: equivalente a shapely/geopandas -->
+        <!-- Geometria e leitura/escrita de GeoJSON -->
         <dependency>
             <groupId>org.locationtech.jts</groupId>
             <artifactId>jts-core</artifactId>
@@ -60,7 +60,7 @@
             <version>${jts.version}</version>
         </dependency>
 
-        <!-- Leitura de CSV: equivalente a pandas.read_csv -->
+        <!-- Leitura de CSV (NASA FIRMS) -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-csv</artifactId>
