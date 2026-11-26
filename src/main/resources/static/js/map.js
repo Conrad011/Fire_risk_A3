@@ -3,6 +3,9 @@ import { date, isLowConfidence, number, time } from "./format.js";
 const KM_PER_DEGREE = 111.32;
 const MAX_MARKERS = 500;
 const ESRI = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/{layer}/MapServer/tile/{z}/{y}/{x}";
+const CITY_PIN_SVG = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' aria-hidden='true'>"
+  + "<path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z' fill='#ff4b4b' stroke='#ffffff' stroke-width='1.5'/>"
+  + "<circle cx='12' cy='9' r='2.5' fill='#ffffff'/></svg>";
 
 let map = null;
 let overlays = null;
@@ -68,7 +71,7 @@ export function renderMap(data) {
 
   L.marker([lat, lon], {
     title: `${nome} / ${uf}`,
-    icon: L.divIcon({ className: "map-pin", html: "📍", iconSize: [24, 24], iconAnchor: [12, 22] }),
+    icon: L.divIcon({ className: "map-pin", html: CITY_PIN_SVG, iconSize: [24, 24], iconAnchor: [12, 22] }),
   }).bindPopup(`${nome} / ${uf}`).addTo(overlays);
 
   map.invalidateSize();
